@@ -4,8 +4,8 @@
   "description": "A Vue.js project",
   "author": "junho",
   "private": true,
-  "scripts": {
-    "dev": "webpack-dev-server --host 0.0.0.0 --disableHostCheck true --inline --progress --config build/webpack.dev.conf.js",
+  "scripts": { 
+    "dev": "webpack-dev-server --hos t 0.0.0.0 --disableHostCheck true --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
