@@ -16,9 +16,9 @@ var app = express();
 // START ADDED CODE
 const port = 3000;
 
-// app.get('/', (req, res) => res.send('Hello World!'));
+//app.get('/', (req, res) => res.send('Hello World!'));
 
-// app.listen(port, () => console.log('Example app listening on port ${port}!'));
+//app.listen(port, () => console.log('Example app listening on port ${port}!'));
 // END ADDED CODE
 mysqlDB.connect();
 
@@ -34,11 +34,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('connect-history-api-fallback')());
 
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/tests', testsRouter); // ADDED
-app.use('/join', joinRouter);
-app.use('/login', loginRouter);
+app.use('/api/tests', testsRouter); // ADDED
+app.use('/api/join', joinRouter);
+app.use('/api/login', loginRouter);
+app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

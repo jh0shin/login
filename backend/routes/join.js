@@ -6,8 +6,6 @@ var mysqlDB = require('../db');
 router.post('/', function (req, res, next) {
     var userID = req.body.user.id;
     var userPASSWORD = req.body.user.password;
-    console.log(userID);
-    console.log(userPASSWORD);
 
     mysqlDB.query('insert into test_user values(?, ?)', [userID, userPASSWORD], function (err, rows, fields) {
         if (!err) {
