@@ -1,10 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
-import Users from '@/components/AllUsersPage'
-import User from '@/components/UsersPage'
-import SignUp from '@/components/JoinPage'
-import Login from '@/components/LoginPage'
+import SignUp from '@/components/account/SignupPage'
+import Login from '@/components/account/LoginPage'
 
 Vue.use(Router)
 
@@ -12,27 +10,18 @@ export default new Router({
   mode: 'history',
   routes: [
     {
+      // need to change homepage component
       path: '/',
       name: 'HelloWorld',
       component: HelloWorld
     },
     {
-      path: '/user',
-      name: 'user',
-      component: Users
-    },
-    {
-      path: '/user/:id',
-      name: 'detail',
-      component: User
-    },
-    {
-      path: '/signUp',
-      name: 'SignUp',
+      path: '/account/signup',
+      name: 'signup',
       component: SignUp
     },
     {
-      path: '/login',
+      path: '/account/login',
       name: 'login',
       component: Login
     }

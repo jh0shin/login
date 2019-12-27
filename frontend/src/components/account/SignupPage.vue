@@ -2,7 +2,7 @@
     <div id= "SignUp">
         <div> Sign Up </div>
         ID : <input v-model="user.id" placeholder="ID"> <br />
-        Password : <input v-model="user.password" type="password" placeholder="password">
+        Password : <input v-model="user.password" type="password" placeholder="password"> <br/>
         <button v-on:click="signUp" > SignUp </button>
     </div>
 </template>
@@ -20,7 +20,7 @@ export default {
     },
     methods: {
         signUp: function (event) {
-            this.$http.post('/api/join', {
+            this.$http.post('/api/account/signup', {
                 user : this.user
             })
             .then((response) => {

@@ -1,28 +1,32 @@
+/*
+  Main code of backend
+*/
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var mysqlDB = require('./db');
+var mysqlDB = require('./db_connector');
 
+// ========================================
+//            ROUTER DECLARATION
+// ========================================
+// index page router (needs modify)
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var testsRouter = require('./routes/test'); // ADDED\
-var joinRouter = require('./routes/join');
-var loginRouter = require('./routes/login');
+// account management files' router
+var joinRouter = require('./routes/account/signup');
+var loginRouter = require('./routes/account/login');
 
+// ========================================
 var app = express();
 
-// START ADDED CODE
+// ========================================
 const port = 3000;
 
-//app.get('/', (req, res) => res.send('Hello World!'));
-
-//app.listen(port, () => console.log('Example app listening on port ${port}!'));
-// END ADDED CODE
 mysqlDB.connect();
 
-
+// ========================================
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -34,12 +38,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('connect-history-api-fallback')());
 
-app.use('/users', usersRouter);
-app.use('/api/tests', testsRouter); // ADDED
-app.use('/api/join', joinRouter);
-app.use('/api/login', loginRouter);
+// ========================================
+//            ROUTER ROUTING
+// ========================================
+app.use('/api/account/join', joinRouter);
+app.use('/api/account/login', loginRouter);
 app.use('/', indexRouter);
 
+// ========================================
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
